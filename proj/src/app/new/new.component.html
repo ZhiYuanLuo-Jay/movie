@@ -1,0 +1,36 @@
+<div class="root">
+  <h3>Submit a movie and Your review</h3>
+  <div *ngIf="err"><p style="color: red;">{{err}}</p></div>
+  <form (submit)="onSubmit()" style="border: 1px solid black; padding: 10px; width: 200px">
+        <!-- use the json pipe to see how newTask changes in real time -->
+        <!-- <p> {{ newMovie | json }} </p> -->
+        <div>
+            <p style="margin: 0px">Movie Title</p>
+            <input name="newMovie.title"  [(ngModel)]="newMovie.title" type="text">
+        </div>
+        <div>
+            <p style="margin: 0px" >Your Name</p>
+            <input name="newMovie.review[0]['name']"  [(ngModel)]="newMovie.review[0]['name']" type="text">
+        </div>
+        <div>
+          <p style="margin: 0px" >Stars</p>
+          <select style="display: inline-block; vertical-align: top; width: 100px; height: 30px;" name="newMovie.review[0].star" [(ngModel)]="newMovie.review[0].star" >
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars</option>
+            <option value="3">3 Stars</option>
+            <option value="2">2 Stars</option>
+            <option value="1" selected>1 Stars</option>
+          </select>
+          <!-- <input name="newMovie.description"  [(ngModel)]="newMovie.description" type="text"> -->
+        </div>
+        <div>
+          <p style="margin: 0px" >Your Review</p>
+          <textarea style="display: inline-block; " name="newMovie.review[0].content" [(ngModel)]="newMovie.review[0].content" rows="4" cols="20" placeholder="Type your comment here..."></textarea>
+          <!-- <input name="newMovie.description"  [(ngModel)]="newMovie.description" type="text"> -->
+        </div>
+
+        <br>
+        <input type="submit" value="Submit" style="margin-right: 10px"> <button [routerLink]="['']">Cancel</button> 
+    </form>
+</div>
+

@@ -1,0 +1,24 @@
+<div class="root">
+  <h3 style="display: inline-block;">Movie List</h3>
+  <a [routerLink]="['/movies/new']" style="margin-left: 300px;">Add a new movie</a>
+  
+  <table class="table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Movie title</th>
+        <th>Available Actions</th> 
+        <th>Rating</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let m of movieList">
+          <td>{{m.title}}</td>
+          <td><a [routerLink]="['/movies', m._id]">Read reviews</a> | <a [routerLink]="['/movies', m._id, 'review']">Write review</a></td>
+          <td>#</td> 
+        </tr>
+    <tbody>
+  </table>
+
+</div>
+
