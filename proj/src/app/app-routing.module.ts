@@ -12,6 +12,10 @@ import { ShowComponent } from './show/show.component';
 const routes: Routes = [
   {path: 'movies', component: MoviesComponent},
   {path: 'movies/new', component: NewComponent},
+  { path: 'movies', component: MoviesComponent, children: [
+    { path: ':id', component: ShowComponent },
+    { path: ':id/review', component: ReviewComponent }]
+  },
   {path: 'movies/:id/review', component: ReviewComponent},
   {path: 'movies/:id', component: ShowComponent},
   {path: '', pathMatch: 'full', redirectTo: '/movies' },

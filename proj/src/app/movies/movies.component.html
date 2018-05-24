@@ -12,6 +12,7 @@
     </thead>
 
     <tbody>
+        <router-outlet></router-outlet>
         <tr *ngFor="let m of movieList">
           <td>{{m.title}}</td>
           <td><a [routerLink]="['/movies', m._id]">Read reviews</a> | <a [routerLink]="['/movies', m._id, 'review']">Write review</a></td>

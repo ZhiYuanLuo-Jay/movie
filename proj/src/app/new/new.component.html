@@ -6,11 +6,15 @@
         <!-- <p> {{ newMovie | json }} </p> -->
         <div>
             <p style="margin: 0px">Movie Title</p>
-            <input name="newMovie.title"  [(ngModel)]="newMovie.title" type="text">
+            <input name="newMovie.title" type="text" required minlength="3" [(ngModel)]="newMovie.title"  #title="ngModel"> 
+            <!-- {{title.errors | json }} -->
+            <!-- {{title.valid  | json }} -->
+            <div *ngIf="!title.valid"><p style="color: red;">{{title.errors | json}}</p></div>
         </div>
         <div>
             <p style="margin: 0px" >Your Name</p>
-            <input name="newMovie.review[0]['name']"  [(ngModel)]="newMovie.review[0]['name']" type="text">
+            <input name="newMovie.review[0]['name']"  [(ngModel)]="newMovie.review[0]['name']" type="text"  required minlength="3" #name="ngModel">
+            <div *ngIf="!name.valid"><p style="color: red;">{{name.errors | json}}</p></div>
         </div>
         <div>
           <p style="margin: 0px" >Stars</p>
@@ -21,12 +25,11 @@
             <option value="2">2 Stars</option>
             <option value="1" selected>1 Stars</option>
           </select>
-          <!-- <input name="newMovie.description"  [(ngModel)]="newMovie.description" type="text"> -->
         </div>
         <div>
           <p style="margin: 0px" >Your Review</p>
-          <textarea style="display: inline-block; " name="newMovie.review[0].content" [(ngModel)]="newMovie.review[0].content" rows="4" cols="20" placeholder="Type your comment here..."></textarea>
-          <!-- <input name="newMovie.description"  [(ngModel)]="newMovie.description" type="text"> -->
+          <textarea style="display: inline-block; " required minlength="3" name="newMovie.review[0].content" [(ngModel)]="newMovie.review[0].content" rows="4" cols="20" placeholder="Type your comment here..." #content="ngModel"></textarea>
+          <div *ngIf="!content.valid"><p style="color: red;">{{content.errors | json}}</p></div>
         </div>
 
         <br>

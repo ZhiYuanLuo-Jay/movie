@@ -1,5 +1,12 @@
 .root {
-    border: 5px solid green;
+    border: 5px solid skyblue;
     border-radius: 10px;
     padding: 10px;
 }
+
+.ng-invalid { }
+.ng-valid { }
+.ng-untouched { }
+.ng-touched { }
+.ng-dirty { }
+.ng-pristine { }
