@@ -27,25 +27,22 @@ export class MoviesComponent implements OnInit {
     obserable.subscribe(info => {
     this.movieList = info['data'];
     
-    
+    let avgRating = 1
     for (const r of this.movieList) {
-      console.log(r);
+      console.log(r);  // movie obj
       this.rating = 0;
-        for(const s in r){
-          // console.log("array length", r.review.length);
+        for(const s in r){   // review array
           let len = r.review.length;
           for (const star of r.review) {
-            // console.log(star.star)
             this.rating += star.star
           }
-          // console.log(this.rating);
-          // console.log(Math.round(this.rating / len));
-          this.rateList.push(Math.round(this.rating / len));
-          console.log(this.rateList);
-          console.log(r);
+          avgRating = Math.round(this.rating / len)
+          this.rateList.push(avgRating);
+          console.log("Rate array: ", this.rateList);
           break;
         }
-        
+        // add a new key/value pair to an object
+        r['avg'] = avgRating;
     }
     console.log("Got our movies!", info['data']);
     
